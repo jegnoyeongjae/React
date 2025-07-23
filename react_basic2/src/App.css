@@ -1,0 +1,9 @@
+.R10 .Tabs button.active {
+  color: white;
+  background-color: rgb(29, 165, 243);
+}
+
+.ex05 {
+  display: flex;
+  gap: 20px;
+}
