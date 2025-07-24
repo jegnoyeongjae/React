@@ -1,0 +1,36 @@
+/* TodoItem.css */
+
+.TodoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.TodoItem .left,
+.TodoItem .right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.TodoItem .left span {
+  font-size: 16px;
+}
+
+.TodoItem .date {
+  color: #666;
+  margin-right: 8px;
+}
+
+.TodoItem button {
+  border: 1px solid #bbb;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #666;
+}
+
+.TodoItem button:hober {
+  color: #222;
+}

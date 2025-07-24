@@ -1,0 +1,14 @@
+/* TodoTop.css */
+
+.TodoTop {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 16px;
+}
+
+.TodoTop h2 {
+  font-size: 20px;
+}
+
+.TodoTop p {
+  font-size: 17px;
+}

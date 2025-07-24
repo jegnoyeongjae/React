@@ -1,0 +1,31 @@
+/* TodoEditor.css */
+
+.TodoEditor {
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.TodoEditor h2 {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.TodoEditor-edit-box {
+  display: flex;
+}
+
+.TodoEditor-edit-box input {
+  flex: 1;
+  box-sizing: border-box;
+  padding: 0 12px;
+  border: 1px solid #ccc;
+}
+
+.TodoEditor-edit-box button {
+  width: 80px;
+  height: 40px;
+  padding: 8px;
+  background-color: #dd0000;
+  color: #fff;
+  font-size: 16px;
+}
