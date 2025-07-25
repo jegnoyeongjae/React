@@ -1,10 +1,10 @@
 import './App.css';
-import R10 from './d0723-01/R10';
+import R11 from './d0725/R11';
 
 function App() {
   return (
     <div>
-      <R10 />
+      <R11 />
     </div>
   );
 }

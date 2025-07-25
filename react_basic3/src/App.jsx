@@ -38,13 +38,40 @@ function App() {
   };
 
   // 일정 데이터 수정 함수
-  const handlemodifyTodo = () => {};
+  const handlemodifyTodo = (id, updateText) => {
+    console.log('App1', id);
+    console.log('App2', updateText);
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, content: updateText } : todo
+      )
+    );
+  };
+
+  // 일정 데이터 삭제 함수
+  const handleDeleteTodo = (id) => {
+    setTodos((prev) => prev.filter((todo) => todo.id !== id));
+  };
+
+  //완료 여부를 처리 하는 함수
+  const handleChangeTodoDone = (id) => {
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
+      )
+    );
+  };
 
   return (
     <div id="App">
       <TodoTop />
       <TodoEditor handleAddTodo={handleAddTodo} />
-      <TodoList todoDatas={todos} />
+      <TodoList
+        todoDatas={todos}
+        handleChangeTodoDone={handleChangeTodoDone}
+        handleDeleteTodo={handleDeleteTodo}
+        handlemodifyTodo={handlemodifyTodo}
+      />
     </div>
   );
 }

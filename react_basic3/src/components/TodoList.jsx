@@ -2,7 +2,14 @@ import { useState } from 'react';
 import TodoItem from './TodoItem';
 import './TodoList.css';
 
-const TodoList = ({ todoDatas, onDelete, onUpdate }) => {
+const TodoList = ({
+  todoDatas,
+  onDelete,
+  onUpdate,
+  handleChangeTodoDone,
+  handleDeleteTodo,
+  handlemodifyTodo,
+}) => {
   const [text, setText] = useState('');
   const handleChangeText = (e) => setText(e.target.value);
 
@@ -31,6 +38,9 @@ const TodoList = ({ todoDatas, onDelete, onUpdate }) => {
             <TodoItem
               key={todo.id}
               todoData={todo}
+              handleChangeTodoDone={handleChangeTodoDone}
+              handleDeleteTodo={handleDeleteTodo}
+              handlemodifyTodo={handlemodifyTodo}
               onDelete={() => onDelete(todo.id)}
               onUpdate={(newContent) => onUpdate(todo.id, newContent)}
             />
