@@ -1,13 +1,23 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './TodoEditor.css';
 
 const TodoEditor = ({ handleAddTodo }) => {
   const [text, setText] = useState('');
+  const inputRef = useRef();
+  const notiRef = useRef();
   const handleChangeText = (e) => {
+    notiRef.current.style.display = 'none';
     setText(e.target.value);
   };
-  const handleClickAddBtn = (text) => {
+  const handleClickAddBtn = () => {
+    const value = text.trim();
+    if (!value) {
+      notiRef.current.style.display = 'block';
+      inputRef.current.focus();
+      return;
+    }
     handleAddTodo(text);
+    setText('');
   };
 
   return (
@@ -19,8 +29,12 @@ const TodoEditor = ({ handleAddTodo }) => {
           placeholder="할일 입력"
           value={text}
           onChange={handleChangeText}
+          ref={inputRef}
         />
-        <button onClick={() => handleClickAddBtn(text)}>추가하기</button>
+        <button onClick={() => handleClickAddBtn()}>추가하기</button>
+      </div>
+      <div className="TodoEditor-deit-noti" ref={notiRef}>
+        할일 입력하소
       </div>
     </div>
   );
