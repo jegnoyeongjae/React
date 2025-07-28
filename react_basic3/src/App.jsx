@@ -39,8 +39,6 @@ function App() {
 
   // 일정 데이터 수정 함수
   const handlemodifyTodo = (id, updateText) => {
-    console.log('App1', id);
-    console.log('App2', updateText);
     setTodos((prev) =>
       prev.map((todo) =>
         todo.id === id ? { ...todo, content: updateText } : todo

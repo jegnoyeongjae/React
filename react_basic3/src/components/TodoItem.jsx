@@ -25,8 +25,6 @@ const TodoItem = ({
   const handleChangeUpdateText = (e) => setUpdateText(e.target.value);
 
   const onUpdateContent = () => {
-    alert(todoData.id);
-    alert(updateText);
     handlemodifyTodo(todoData.id, updateText);
     onUpdateTodo();
   };
