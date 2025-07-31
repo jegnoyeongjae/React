@@ -2,10 +2,67 @@ import './ListPage.css';
 import { Header } from '../components/common';
 import { useEffect, useState } from 'react';
 import { DiaryList } from '../components/diary';
+import { SelectBox } from '../components/feature';
+
+const SORT_OPTION_LIST = [
+  {
+    value: 'latest',
+    name: '최신순',
+  },
+  {
+    value: 'oldest',
+    name: '오래된 순',
+  },
+];
+const FILTER_OPTION_LIST = [
+  {
+    value: 'all',
+    name: '전체',
+  },
+  {
+    value: 'sunny',
+    name: '맑음',
+  },
+  {
+    value: 'cloudy',
+    name: '흐림',
+  },
+  {
+    value: 'rainny',
+    name: '비',
+  },
+];
 
 const ListPage = ({ diary }) => {
   const [nowDate, setNowDate] = useState(new Date());
   const [diaryData, setDiarData] = useState([]); // 날짜에 맞는 다이어리 목록
+
+  const [currentSort, setCurrentSort] = useState(SORT_OPTION_LIST[0].value);
+  const [currentFilter, setCurrentFilter] = useState(
+    FILTER_OPTION_LIST[0].value
+  );
+
+  const handleChangeSort = (e) => setCurrentSort(e.target.value);
+  const handleChangeFilter = (e) => setCurrentFilter(e.target.value);
+
+  // 날씨를 필터링 후 순서 정렬을 처리할 함수
+  const getFilterChange = () => {
+    const data = diaryData;
+    const filterList = data.filter((diary) =>
+      currentFilter === 'all' ? diary : diary.weather === currentFilter
+    );
+    const sortList = filterList.sort((a, b) => {
+      if (currentSort === 'latest') {
+        return new Date(b.date) - new Date(a.date);
+      } else {
+        return;
+        return new Date(a.date) - new Date(b.date);
+      }
+    });
+    return sortList;
+  };
+
+  const filterSortList = getFilterChange();
 
   // diaryData는 현재 날짜에 맞는 다이어리 목록이 저장되어야함.
   // 현재 날짜는 nowDate변수에 저장된 값을 가리킴.
@@ -42,7 +99,24 @@ const ListPage = ({ diary }) => {
         handleLeftBtn={handleClickNext}
         handleRightBtn={handleClickPrev}
       />
-      <DiaryList diarys={diaryData} />
+      <div className="list-top">
+        <div className="total">총 {filterSortList.length}개</div>
+        <div className="select-wrap">
+          <SelectBox
+            id="listSort"
+            optList={SORT_OPTION_LIST}
+            value={currentSort}
+            handleChangeSelect={handleChangeSort}
+          />
+          <SelectBox
+            id="listFilter"
+            optList={FILTER_OPTION_LIST}
+            value={currentFilter}
+            handleChangeSelect={handleChangeFilter}
+          />
+        </div>
+      </div>
+      <DiaryList diarys={filterSortList} />
       {/* <video muted autoPlay loop>
         <source src="../img/ive_accensio.mp4" type="video/mp4" />
       </video> */}

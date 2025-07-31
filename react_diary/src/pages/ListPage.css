@@ -1,5 +1,13 @@
-.ListPage img {
-  width: 500px;
-  height: 500px;
-  display: block;
+.ListPage .list-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 12px 24px;
+}
+
+.ListPage .list-top select {
+  width: 90px;
+  height: 32px;
+  margin-left: 4px;
+  border: 1px solid #ccc;
 }

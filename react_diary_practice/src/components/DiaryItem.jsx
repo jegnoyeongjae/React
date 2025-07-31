@@ -1,6 +1,3 @@
-import './DiaryItem.css';
-import { Link } from 'react-router-dom';
-
 const DiaryItem = ({ diary }) => {
   const WEATHER_ICON = [
     { value: 'sunny', label: '맑음', icon: '☀️' },
@@ -14,15 +11,12 @@ const DiaryItem = ({ diary }) => {
   );
 
   return (
-    <li className="DiaryItem">
-      <Link to={`/detail/${diary.id}`}>
-        <p className="left">
-          <span className="weather">{matchedWeather?.icon}</span>
-          <span className="title">{diary.title}</span>
-        </p>
-        <p className="date">{diary.date}</p>
-      </Link>
-    </li>
+    <div className="DiaryItem">
+      <h2>{diary.id}</h2>
+      <span className="weather">{matchedWeather?.icon}</span>
+      {diary.title}
+      {diary.date}
+    </div>
   );
 };
 

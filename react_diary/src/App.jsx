@@ -29,8 +29,8 @@ function App() {
         <Routes>
           <Route path="/" element={<ListPage diary={diary} />} />
           <Route path="/new" element={<CreatePage />} />
-          <Route path="/edit" element={<EditPage />} />
-          <Route path="/detail" element={<DetailPage />} />
+          <Route path="/edit/:id" element={<EditPage />} />
+          <Route path="/detail/:id" element={<DetailPage diary={diary} />} />
         </Routes>
         <nav>
           <ul>
