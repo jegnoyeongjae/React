@@ -1,3 +1,3 @@
 import SelectBox from './SelectBox';
-
-export { SelectBox };
+import WeatherItem from './WeatherItem';
+export { SelectBox, WeatherItem };

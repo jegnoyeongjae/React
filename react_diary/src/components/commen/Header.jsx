@@ -1,4 +1,5 @@
 import './Header.css';
+
 const Header = ({
   title,
   btnLeft,
@@ -7,23 +8,23 @@ const Header = ({
   handleRightBtn,
 }) => {
   return (
-    <div className="header">
+    <header id="header">
       <h1 className="title">{title}</h1>
       {btnLeft && (
         <p className="btnLeft">
           <button onClick={handleLeftBtn}>
-            <span>left btn</span>
+            <span>왼쪽 버튼</span>
           </button>
         </p>
       )}
       {btnRight && (
         <p className="btnRight">
           <button onClick={handleRightBtn}>
-            <span>right btn</span>
+            <span>오른쪽 버튼</span>
           </button>
         </p>
       )}
-    </div>
+    </header>
   );
 };
 

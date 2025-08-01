@@ -1,23 +1,13 @@
-import './DiaryItem.css';
 import { Link } from 'react-router-dom';
+import { WEATHER_ICONS } from '../../constants';
+import './DiaryItem.css';
 
 const DiaryItem = ({ diary }) => {
-  const WEATHER_ICON = [
-    { value: 'sunny', label: '맑음', icon: '☀️' },
-    { value: 'cloudy', label: '흐림', icon: '☁️' },
-    { value: 'rainny', label: '비', icon: '🌧️' },
-  ];
-
-  // diary.weather 값에 해당하는 아이콘 찾기
-  const matchedWeather = WEATHER_ICON.find(
-    (item) => item.value === diary.weather
-  );
-
   return (
     <li className="DiaryItem">
       <Link to={`/detail/${diary.id}`}>
         <p className="left">
-          <span className="weather">{matchedWeather?.icon}</span>
+          <span className="weather">{WEATHER_ICONS[diary.weather]}</span>
           <span className="title">{diary.title}</span>
         </p>
         <p className="date">{diary.date}</p>

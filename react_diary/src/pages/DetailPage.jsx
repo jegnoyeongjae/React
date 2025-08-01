@@ -1,29 +1,69 @@
-import { useParams } from 'react-router-dom';
-import { Header } from '../components/common';
-import { useEffect, useState } from 'react';
+// 리액트의 리듀서를 사용해 컨트롤
 
-const DetailPage = ({ diary }) => {
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+
+import { Header } from '../components/commen';
+
+import { WEATHER_ICONS } from '../constants';
+import { formatTextWithBr } from '../utills';
+
+const DetailPage = ({ diarys, onRemove }) => {
+  const navigate = useNavigate();
+
   const { id } = useParams();
-  const [diaryD, setDiaryD] = useState();
+  const numId = Number(id);
+
+  const [diary, setDiary] = useState({});
 
   useEffect(() => {
-    if (diary && diary.length > 0) {
-      const sd = diary.find((dataD) => dataD.id == id);
-      setDiaryD(sd);
-    }
-  }, [diary, id]);
+    fetchData();
+  }, [id]);
 
-  // 로딩 또는 데이터 없음 처리
-  if (!diaryD) {
-    return <div>데이터를 불러오는 중입니다...</div>;
-  }
+  const fetchData = async () => {
+    const found = diarys.find((item) => item.id === numId);
+    setDiary(found);
+  };
+
+  const handleGoList = () => {
+    navigate('/');
+  };
+
+  const handleGoEdit = () => {
+    navigate(`/edit/${id}`);
+  };
+
+  const handleRemoveDiary = () => {
+    if (confirm('해당 일기를 정말 삭제하시겠습니까?')) {
+      onRemove(numId);
+      navigate('/');
+    }
+  };
+
+  const lines = formatTextWithBr(diary.content);
 
   return (
     <div className="DetailPage">
-      <Header title={'상세 페이지'} btnLeft={'이전 페이지로 이동'} />
-      <h3>DetailPage</h3>
-      <div>{diaryD.title}</div>
-      <div>{diaryD.content}</div>
+      <Header
+        title={diary.title}
+        btnLeft={'목록 페이지로 이동'}
+        handleLeftBtn={handleGoList}
+      />
+      <div className="detail-page-content">
+        <div className="top">
+          <p className="date">{diary.date}</p>
+          <p className="weather">{WEATHER_ICONS[diary.weather]}</p>
+        </div>
+        <div className="content">
+          {lines.map((line, idx) => (
+            <p key={idx}>{line}</p>
+          ))}
+        </div>
+      </div>
+      <div className="detail-page-btn">
+        <button onClick={handleRemoveDiary}>삭제하기</button>
+        <button onClick={handleGoEdit}>수정하기</button>
+      </div>
     </div>
   );
 };

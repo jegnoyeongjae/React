@@ -1,4 +1,4 @@
-const SelectBox = ({ optList, handleChangeSelect, value, id }) => {
+const SelectBox = ({ id, optList, value, handleChangeSelect }) => {
   return (
     <select
       id={id}
@@ -8,7 +8,6 @@ const SelectBox = ({ optList, handleChangeSelect, value, id }) => {
     >
       {optList.map((opt, idx) => (
         <option key={idx} value={opt.value}>
-          {' '}
           {opt.name}
         </option>
       ))}

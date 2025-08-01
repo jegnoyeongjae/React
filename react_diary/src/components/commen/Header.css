@@ -1,48 +1,42 @@
-.header {
+#header {
   position: relative;
   height: 64px;
   border-bottom: 1px solid #ccc;
 }
-
-.header .title {
+#header .title {
   line-height: 64px;
   text-align: center;
   font-size: 24px;
 }
-
-.header .btnLeft,
-.header .btnRight {
+#header .btnLeft,
+#header .btnRight {
   position: absolute;
   top: 12px;
 }
-.header .btnLeft {
+#header .btnLeft {
   left: 12px;
 }
-
-.header .btnRight {
+#header .btnRight {
   right: 12px;
 }
-
-.header .btnLeft button,
-.header .btnRight button {
+#header .btnLeft button,
+#header .btnRight button {
   width: 40px;
   height: 40px;
 }
-
-.header .btnLeft button span,
-.header .btnRight button span {
+#header .btnLeft button span,
+#header .btnRight button span {
   position: absolute;
-  top: -9999999999px;
-  left: -9999999999px;
+  top: -99999px;
+  left: -99999px;
   display: block;
   width: 1px;
   height: 1px;
   overflow: hidden;
   opacity: 1;
 }
-
-.header .btnLeft button::before,
-.header .btnRight button::before {
+#header .btnLeft button::before,
+#header .btnRight button::before {
   content: '';
   display: block;
   width: 12px;
@@ -50,14 +44,11 @@
   border-top: 2px solid #555;
   border-right: 2px solid #555;
 }
-
-.header .btnRight button::before {
+#header .btnLeft button::before {
   margin-left: 14px;
-  transform: rotate(45deg);
-}
-
-.header .btnLeft button::before {
-  margin-left: 8px;
-
   transform: rotate(-135deg);
+}
+#header .btnRight button::before {
+  margin-left: 8px;
+  transform: rotate(45deg);
 }

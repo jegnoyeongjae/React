@@ -1,32 +1,31 @@
-import './App.css';
-import ListPage from './pages/ListPage';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { useEffect, useReducer } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { diaryReducer } from './reducer/diaryReducer';
+import ListPage from './pages/ListPage';
+import './App.css';
 
-function App() {
-  const [diary, diaryDispatch] = useReducer(diaryReducer, []);
-  useEffect(() => {
+const App = () => {
+    const [diarys, setDiarys] = useState([]);
+
+    useEffect(()=>{
+        // 데이터 패치 함수 호출 = 실행
+        dataLoading();
+    }, []);
+
+    // 데이터 패치 함수를 정의
     const dataLoading = async () => {
-      try {
-        const response = await axios.get('/data/initialDiary.json');
-        diaryDispatch({
-          type: 'INIT',
-          data: response.data,
-        });
-      } catch (error) {
-        console.log('데이터 로딩 실패: ', error);
-      }
-    };
-    dataLoading();
-  }, []);
+        try{
+            const res = await axios.get('/data/initialDiary.json');
+            setDiarys(res.data);
+        } catch(e) {
+            console.error('데이터 패치 에러 : ', e);
+        }
+    }
 
-  return (
-    <div>
-      <ListPage diary={diary} />
-    </div>
-  );
+    return (
+        <>
+            <ListPage diarys={diarys} />
+        </>
+    )
 }
 
 export default App;

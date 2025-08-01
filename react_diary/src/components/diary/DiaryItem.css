@@ -3,22 +3,18 @@
   border-bottom: 1px dashed #ccc;
   line-height: 20px;
 }
-
 .DiaryItem a {
   display: flex;
   justify-content: space-between;
-  color: #575656;
 }
 .DiaryItem .weather {
   margin-right: 8px;
   font-size: 16px;
 }
-
 .DiaryItem .title {
   font-size: 16px;
-  columns: #121212;
+  color: #121212;
 }
-
 .DiaryItem .date {
   color: #444;
 }

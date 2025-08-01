@@ -1,11 +1,14 @@
-import DiaryItem from './DiaryItem';
+import DiaryItem from "./DiaryItem";
 
-const DiaryList = () => {
-  return (
-    <div className="DiaryList">
-      <DiaryItem />
-    </div>
-  );
-};
+const DiaryList = ({diarys}) => {
+
+    return (
+        <div className="DiaryList">
+            {diarys.map(diary => 
+                <DiaryItem key={diary.id} diary={diary} />
+            )}
+        </div>
+    )
+}
 
 export default DiaryList;
