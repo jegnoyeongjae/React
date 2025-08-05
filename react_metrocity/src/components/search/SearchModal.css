@@ -1,0 +1,21 @@
+.SearchModal {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid black;
+  background-color: antiquewhite;
+}
+
+.SearchModal .inner {
+  width: 1240px;
+  margin: 0 auto;
+  padding: 40px 0;
+  background-color: aqua;
+}
+
+.SearchModal .keyword-best {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 28px;
+}

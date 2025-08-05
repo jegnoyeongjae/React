@@ -1,3 +1,3 @@
-import { diaryReducer } from './diaryReducer';
+import { diaryReducer } from "./diaryReducer";
 
 export { diaryReducer };

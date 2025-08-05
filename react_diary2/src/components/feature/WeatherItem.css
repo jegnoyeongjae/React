@@ -1,0 +1,13 @@
+.WeatherItem button {
+  width: 120px;
+  height: 48px;
+  background-color: #eee;
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+.WeatherItem button.active {
+  filter: grayscale(0);
+  opacity: 1;
+  background-color: var(--color-second);
+}

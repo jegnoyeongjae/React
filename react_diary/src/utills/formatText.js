@@ -1,6 +1,6 @@
-export const formatTextWithBr = (text) => {
-  return (text ?? '').split('\n');
-};
+export const formatTextWithBr = text => {
+    return (text ?? '').split('\n');
+}
 
 // * null 병합 연산자
 // text ?? ''

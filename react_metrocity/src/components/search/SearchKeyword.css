@@ -1,0 +1,4 @@
+.SearchKeyword .keyword {
+  display: flex;
+  flex-direction: column;
+}

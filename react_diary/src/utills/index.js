@@ -1,3 +1,3 @@
-import { formatTextWithBr } from './formatText';
+import { formatTextWithBr } from "./formatText";
 
 export { formatTextWithBr };
