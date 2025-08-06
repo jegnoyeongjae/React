@@ -1,0 +1,31 @@
+#SearchPage {
+  width: 1210px;
+  margin: 0 auto;
+}
+
+#SearchPage .hasResult {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+#SearchPage h2 {
+  text-align: center;
+  margin: 20px;
+}
+
+#SearchPage .hasResult .ProductItem {
+  width: 280px;
+}
+
+#SearchPage .noResult {
+  text-align: center;
+  font-size: x-large;
+  font-weight: 400;
+}
+
+#SearchPage .resultTotal {
+  font-weight: 500;
+  margin-bottom: 50px;
+}

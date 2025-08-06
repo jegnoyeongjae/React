@@ -1,9 +1,13 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-import ProductItem from '../products/ProductItem';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { ProductItem } from '../products';
+
+import './SearchBest.css';
 
 const SearchBest = () => {
   const [items, setItems] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
@@ -11,51 +15,34 @@ const SearchBest = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get('/data/products.json');
-      const data = res.data.products;
+      const response = await axios.get('/data/products.json');
+      const data = response.data.products;
       const itemLists = data.flatMap((d) =>
         d.variants.map((variant) => ({
-          id: variant.id,
-          model_id: d.model.model_id,
-          cate_no: d.model.cate_no,
-          main_category: d.model.main_category,
-          sub_category: d.model.sub_category,
-          detail_category: d.model.detail_category,
-          name: d.model.name,
-          price: d.model.price,
-          serial: variant.serial,
-          color: variant.color,
-          thumbnail: variant.thumbnail,
-          stock: variant.stock,
-          discount: variant.discount,
-          sales_count: variant.sales_count,
-          created_at: variant.created_at,
+          ...d.model,
+          ...variant,
+          total_sales:
+            ((d.model.price * (100 - variant.discount)) / 100) *
+            variant.sales_count,
         }))
       );
       const sortedItems = itemLists.sort(
         (a, b) => b.total_sales - a.total_sales
       );
       setItems(sortedItems.slice(0, 4));
-    } catch (error) {
-      console.log('에러 ', error);
+    } catch (e) {
+      console.error('베스트 아이템 데이터 로딩 실패 : ', e);
     }
   };
 
   return (
     <div className="SearchBest">
-      <div>
-        {items ? (
-          items.map((item, idx) => {
-            return (
-              <div key={idx}>
-                <ProductItem />
-              </div>
-            );
-          })
-        ) : (
-          <div> 화면 출력불가 </div>
-        )}
-      </div>
+      <h3>베트스 상품</h3>
+      <ul>
+        {items.map((item) => (
+          <ProductItem key={item.id} item={item} />
+        ))}
+      </ul>
     </div>
   );
 };

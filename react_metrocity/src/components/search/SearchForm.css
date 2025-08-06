@@ -1,0 +1,13 @@
+.SearchForm {
+  display: flex;
+  justify-content: center;
+}
+
+.SearchForm input {
+  width: 300px;
+  border: 0px;
+  border-bottom: 1px solid black;
+  text-align: center;
+  font-size: medium;
+  line-height: 2;
+}

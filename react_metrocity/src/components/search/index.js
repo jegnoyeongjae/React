@@ -1,6 +1,6 @@
-import SearchBest from './SearchBest';
-import SearchFrom from './SearchFrom';
-import SearchKeyword from './SearchKeyword';
-import SearchModal from './SearchModal';
+import SearchModal from "./SearchModal";
+import SearchForm from "./SearchForm";
+import SearchKeyword from "./SearchKeyword";
+import SearchBest from "./SearchBest";
 
-export { SearchBest, SearchFrom, SearchKeyword, SearchModal };
+export {SearchModal, SearchForm, SearchKeyword, SearchBest}

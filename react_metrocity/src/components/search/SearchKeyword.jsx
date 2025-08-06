@@ -1,44 +1,45 @@
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+
 import './SearchKeyword.css';
-import { Link } from 'react-router-dom';
 
-const SearchKeyword = () => {
-  const [keyword, setKeyword] = useState();
-
+const SearchKeyword = ({ handleClickSearchBtn }) => {
+  const [keywords, setKeywords] = useState([]);
+  const navigate = useNavigate('');
   useEffect(() => {
-    const loading = async () => {
-      try {
-        const res = await axios.get('/data/recommendKeywords.json');
-
-        const resSlice = res.data.recommendations.slice(0, 7);
-
-        setKeyword(resSlice);
-      } catch (error) {
-        console.log('에러입니다. ', error);
-      }
-    };
-    loading();
+    fetchData();
   }, []);
 
-  console.log(keyword);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('/data/recommendKeywords.json');
+      const data = response.data.recommendations;
+      setKeywords(data.slice(0, 7));
+    } catch (e) {
+      console.error('검색 키워드 데이터 로딩 실패 : ', e);
+    }
+  };
+  const handleClickKeyword = (keyword) => {
+    navigate(`/search?keyword=${keyword}`);
+    handleClickSearchBtn();
+  };
   return (
     <div className="SearchKeyword">
-      {keyword ? (
-        <div className="keyword">
-          {keyword.map((item, idx) => (
-            <div key={idx}>
-              <Link to={''}>
-                <span>
-                  {idx + 1}. {item}{' '}
-                </span>
-              </Link>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div>추천 없음</div>
-      )}
+      <h3>추천 검색어</h3>
+      <ul>
+        {keywords.map((keyword, idx) => (
+          <li
+            key={idx}
+            onClick={() => {
+              handleClickKeyword(keyword);
+            }}
+          >
+            <span className="rank">{idx + 1}.</span>
+            <span className="word">{keyword}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

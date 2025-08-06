@@ -3,28 +3,32 @@
   height: 80px;
   border-bottom: 1px solid #ccc;
   z-index: 500;
+
+  .utills {
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    line-height: 40px;
+
+    ul {
+      display: flex;
+      gap: 16px;
+    }
+
+    a {
+      color: #777;
+      font-style: 13px;
+    }
+  }
 }
-#Header .utills {
-  position: absolute;
-  right: 40px;
-  top: 20px;
-  line-height: 40px;
-}
-#Header .utills ul {
-  display: flex;
-  gap: 16px;
-}
-#Header .utills li a {
-  color: #777;
-  font-style: 13px;
-}
+
 #Header .utills li:hover a {
   text-decoration: underline;
   color: #555;
 }
 #Header .utills .open-search button {
-  height: 40px;
   width: 20px;
+  height: 40px;
 }
 #Header .utills .open-search button img {
   width: 100%;

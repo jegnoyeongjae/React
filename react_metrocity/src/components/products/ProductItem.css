@@ -1,0 +1,37 @@
+.ProductItem .thumbnail img {
+  width: 100%;
+  height: auto;
+}
+
+.ProductItem .name {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.ProductItem .ProductItem {
+  display: flex;
+  gap: 6px;
+}
+
+.ProductItem .ProductItem .discount {
+  font-weight: 600;
+  color: var(--color-point);
+}
+
+.ProductItem .ProductItem .sale-price {
+  color: #121212;
+}
+
+.ProductItem .ProductItem .sale-price number {
+  font-weight: 500;
+}
+
+.ProductItem .price .original-price {
+  padding-top: 2px;
+  color: #666;
+  text-decoration: line-through;
+  font-size: 14px;
+}
+a {
+  color: #121212;
+}

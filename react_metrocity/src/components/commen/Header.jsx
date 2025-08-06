@@ -1,14 +1,15 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { SearchModal } from '../search';
-import { useRef, useState } from 'react';
+
 import Gnb from './Gnb';
+import { SearchModal } from '../search';
 
 import './Header.css';
 
 const Header = () => {
-  const [isOpenSearch, setIsOpenSearch] = useState(true);
+  const [isOpenSearch, setIsOpenSearch] = useState(false);
 
-  const handleClickSearch = () => {
+  const handleClickSearchBtn = () => {
     setIsOpenSearch(!isOpenSearch);
   };
 
@@ -30,9 +31,9 @@ const Header = () => {
             <Link to="">KO</Link>
           </li>
           <li className="open-search">
-            <button onClick={handleClickSearch}>
+            <button onClick={handleClickSearchBtn}>
               {isOpenSearch ? (
-                <img src="/images/x-button.png" alt="닫기" />
+                <img src="/images/x-button.png" alt="검색창 닫기" />
               ) : (
                 <img src="/images/icon_search.png" alt="검색창 열기" />
               )}
@@ -40,7 +41,9 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      {isOpenSearch && <SearchModal />}
+      {isOpenSearch && (
+        <SearchModal handleClickSearchBtn={handleClickSearchBtn} />
+      )}
     </header>
   );
 };

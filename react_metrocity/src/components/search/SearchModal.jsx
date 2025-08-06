@@ -1,15 +1,16 @@
-import SearchBest from './SearchBest';
-import SearchFrom from './SearchFrom';
+import SearchForm from './SearchForm';
 import SearchKeyword from './SearchKeyword';
+import SearchBest from './SearchBest';
+
 import './SearchModal.css';
 
-const SearchModal = () => {
+const SearchModal = ({ handleClickSearchBtn }) => {
   return (
     <div className="SearchModal">
       <div className="inner">
-        <SearchFrom />
+        <SearchForm handleClickSearchBtn={handleClickSearchBtn} />
         <div className="keyword-best">
-          <SearchKeyword />
+          <SearchKeyword handleClickSearchBtn={handleClickSearchBtn} />
           <SearchBest />
         </div>
       </div>
