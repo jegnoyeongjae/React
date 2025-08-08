@@ -1,13 +1,15 @@
-.SearchForm {
-  display: flex;
-  justify-content: center;
+.SearchForm{
+    width: 480px;
+    margin: 0 auto;
+    border-bottom: 1px solid #555;
 }
-
-.SearchForm input {
-  width: 300px;
-  border: 0px;
-  border-bottom: 1px solid black;
-  text-align: center;
-  font-size: medium;
-  line-height: 2;
+.SearchForm input{
+    width: 432px;
+    height: 40px;
+    padding: 0 4px;
+    border: 0;
+}
+.SearchForm button{
+    width: 40px;
+    height: 40px;
 }

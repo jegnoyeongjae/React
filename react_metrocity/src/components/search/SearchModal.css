@@ -1,18 +1,18 @@
-.SearchModal {
-  position: absolute;
-  top: 80px;
-  left: 0;
-  width: 100%;
-  border-top: 1px solid #555;
-  background-color: #fff;
+.SearchModal{
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #555;
+    background-color: #fff;
 }
-.SearchModal .inner {
-  width: 1240px;
-  margin: 0 auto;
-  padding: 40px 0;
+.SearchModal .inner{
+    width: 1240px;
+    margin: 0 auto;
+    padding: 40px 0;
 }
-.SearchModal .keyword-best {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 28px;
+.SearchModal .keyword-best{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 28px;
 }

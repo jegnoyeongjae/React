@@ -1,7 +1,26 @@
-:root {
-  --color-point: #dc143c;
+:root{
+    --color-point: #dc143c;
 }
 
-#wrapper {
-  min-width: 1280px;
+#wrapper{
+    min-width: 1280px;
+}
+.sub-page-wrapper{
+    width: 1240px;
+    margin: 0 auto;
+    padding-top: 60px;
+    padding-bottom: 100px;    
+}
+.sub-page-wrapper > h2{
+    margin-bottom: 40px;
+    font-size: 40px;
+    text-align: center;
+}
+.sub-page-wrapper .item-list ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px 32px;
+}
+.sub-page-wrapper .item-list li{
+    width: 286px;
 }

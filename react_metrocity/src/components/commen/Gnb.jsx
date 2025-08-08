@@ -25,7 +25,7 @@ const Gnb = () => {
     return (
         <div id="Gnb" ref={gnbRef}>
             <h1 className="logo">
-                <Link to=''>
+                <Link to='/'>
                     <img src="/images/metro_logo.png" alt="메트로시티" />
                 </Link>
             </h1>
@@ -45,17 +45,17 @@ const Gnb = () => {
                         </div>
                     </li>
                     <li onMouseEnter={handleMouseEnterDepth1}>
-                        <Link to=''><span>WOMEN</span></Link>
+                        <Link to='/product/list?main_cate=WOMEN'><span>WOMEN</span></Link>
                         <div className="depth2">
                             <div className="depth2-inner">
                                 <div className="depth2-menu">
                                     <ul>
                                         <li>
-                                            <Link to=''>BAG</Link>
+                                            <Link to='/product/list?main_cate=WOMEN&sub_cate=BAG'>BAG</Link>
                                             <div className="depth3-menu">
                                                 <ul>
                                                     <li><Link to=''>BEST</Link></li>
-                                                    <li><Link to=''>TOTE BAG</Link></li>
+                                                    <li><Link to='/product/list?main_cate=WOMEN&sub_cate=BAG&detail_cate=TOTEBAG'>TOTE BAG</Link></li>
                                                     <li><Link to=''>SHOULDER BAG</Link></li>
                                                     <li><Link to=''>CROSS BAG</Link></li>
                                                     <li><Link to=''>MINI BAG</Link></li>
@@ -66,11 +66,11 @@ const Gnb = () => {
                                             </div>
                                         </li>
                                         <li>
-                                            <Link to=''>SLG</Link>
+                                            <Link to='/product/list?main_cate=WOMEN&sub_cate=SLG'>SLG</Link>
                                             <div className="depth3-menu">
                                                 <ul>
                                                     <li><Link to=''>BEST</Link></li>
-                                                    <li><Link to=''>WALLET</Link></li>
+                                                    <li><Link to='/product/list?main_cate=WOMEN&sub_cate=BAG&detail_cate=WALLET'>WALLET</Link></li>
                                                     <li><Link to=''>CARD WALLET</Link></li>
                                                     <li><Link to=''>OTHER</Link></li>
                                                 </ul>
@@ -143,7 +143,7 @@ const Gnb = () => {
                                             <Link to=''>RTW</Link>
                                             <div className="depth3-menu">
                                                 <ul>
-                                                    <li><Link to=''>OUTER</Link></li>
+                                                    <li><Link to='/product/list?main_cate=MEN&sub_cate=RTW&detail_cate=OUTER'>OUTER</Link></li>
                                                     <li><Link to=''>TOP</Link></li>
                                                     <li><Link to=''>PANTS</Link></li>
                                                     <li><Link to=''>ACC</Link></li>

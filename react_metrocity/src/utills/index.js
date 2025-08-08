@@ -1,3 +1,3 @@
-import { formattedPrice } from './formatted';
+import { formattedPrice } from "./formatted";
 
-export { formattedPrice };
+export { formattedPrice }

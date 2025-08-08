@@ -1,13 +1,11 @@
-.SearchBest li {
-  width: 220px;
+.SearchBest h3{
+    margin-bottom: 12px;
+    font-weight: 400;
 }
-
-.SearchBest h3 {
-  margin-bottom: 12px;
-  font-weight: 400;
+.SearchBest ul{
+    display: flex;
+    gap: 12px;
 }
-
-.SearchBest ul {
-  display: flex;
-  gap: 12px;
+.SearchBest li{
+    width: 220px;
 }

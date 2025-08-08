@@ -1,36 +1,32 @@
-#Header {
-  position: relative;
-  height: 80px;
-  border-bottom: 1px solid #ccc;
-  z-index: 500;
-
-  .utills {
+#Header{
+    position: relative;
+    height: 80px;
+    border-bottom: 1px solid #ccc;
+    z-index: 500;
+}
+#Header .utills{
     position: absolute;
     right: 40px;
     top: 20px;
     line-height: 40px;
-
-    ul {
-      display: flex;
-      gap: 16px;
-    }
-
-    a {
-      color: #777;
-      font-style: 13px;
-    }
-  }
 }
-
-#Header .utills li:hover a {
-  text-decoration: underline;
-  color: #555;
+#Header .utills ul{
+    display: flex;
+    gap: 16px;
 }
-#Header .utills .open-search button {
-  width: 20px;
-  height: 40px;
+#Header .utills li a{
+    color: #777;
+    font-style: 13px;
 }
-#Header .utills .open-search button img {
-  width: 100%;
-  height: auto;
+#Header .utills li:hover a{
+    text-decoration: underline;
+    color: #555;
+}
+#Header .utills .open-search button{
+    width: 20px;
+    height: 40px;
+}
+#Header .utills .open-search button img{
+    width: 100%;
+    height: auto;
 }
