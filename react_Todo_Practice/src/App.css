@@ -1,0 +1,10 @@
+:root{
+    --primary-color : #1f38a8;
+    --color-second : #cfd8ff;
+    --font-heading1: Serif;
+}
+
+.btn-primary{
+    background-color: var(--primary-color) !important;
+    color: #fff;
+}

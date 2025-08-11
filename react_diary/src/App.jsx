@@ -25,6 +25,7 @@ const App = () => {
                                                 });
 
                                         */
+        console.log('리스폰스 데이터: ', response.data);
         diaryDispatch({
           type: 'INIT',
           data: response.data,
