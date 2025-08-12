@@ -4,6 +4,7 @@ import { CreatePage, DetailPage, EditPage, ListPage } from './pages';
 import { useEffect, useReducer, useState } from 'react';
 import { diaryReducer } from './reducer/diaryReducer';
 import axios from 'axios';
+import AppRoute from './router/AppRouter';
 
 function App() {
   const [state, dispatch] = useReducer(diaryReducer, []);
@@ -37,10 +38,12 @@ function App() {
       <div>
         <BrowserRouter>
           <Routes>
-            <Route path="/list" element={<ListPage Data={state} />} />
-            <Route path="/newArticle" element={<CreatePage />} />
-            <Route path="/edit" element={<EditPage Data={state} />} />
-            <Route path="/detail/:id" element={<DetailPage Data={state} />} />
+            <Route path="/" element={<AppRoute />}>
+              <Route path="/list" element={<ListPage Data={state} />} />
+              <Route path="/newArticle" element={<CreatePage />} />
+              <Route path="/edit" element={<EditPage Data={state} />} />
+              <Route path="/detail/:id" element={<DetailPage Data={state} />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </div>

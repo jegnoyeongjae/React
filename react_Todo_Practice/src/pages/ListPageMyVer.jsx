@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+// 정리되기 전에 난잡한 버전 원본과 비교 분석 하면서 뭔 차이인지 분석해보기 바람(원본: ListPage)
 
+import { useEffect, useState } from 'react';
 import './ListPage.css';
 import { useOutletContext } from 'react-router-dom';
 
@@ -18,6 +19,8 @@ const FILTER_OPTION_LIST = [
 const ListPage = ({ Data }) => {
   const [date, setDate] = useState(new Date());
   const [listData, setListData] = useState([]);
+  const nowMonth = date.toLocaleDateString('Ko-kr');
+  const [initialLoad, setInitialLoad] = useState(true); // 초기 로딩 상태
   const { setHeaderProps } = useOutletContext();
 
   const getFilteredDiaryByMonth = (dateToFilter) => {
@@ -51,10 +54,9 @@ const ListPage = ({ Data }) => {
         new Date(diary.date) >= firstDay && new Date(diary.date) < lastDay
     );
    */
-
   useEffect(() => {
     setHeaderProps({
-      title: date.toLocaleDateString('KO-kr'),
+      title: nowMonth,
       handleClickPrev,
       handleClickNext,
     });
@@ -71,19 +73,15 @@ const ListPage = ({ Data }) => {
       (now) => new Date(now.date).valueOf() == nowMonth
     );
     */
-    const today = new Date();
-    if (
-      date.getFullYear() === today.getFullYear() &&
-      date.getMonth() === today.getMonth() &&
-      date.getDate() === today.getDate()
-    ) {
-      // 오늘 날짜면 하루 데이터만 보여줌
+    if (initialLoad) {
+      // 초기 로딩 시 오늘 날짜 데이터만 필터링
       setListData(getFilteredDiaryByDay(date));
+      setInitialLoad(false);
     } else {
-      // 그 외엔 달 전체 데이터 보여줌
+      // 이후에는 달 전체 데이터 필터링
       setListData(getFilteredDiaryByMonth(date));
     }
-  }, [Data, date]);
+  }, [nowMonth, Data, date]);
 
   // 이전 달 버튼 클릭 시
   const handleClickPrev = () => {
