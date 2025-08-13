@@ -1,8 +1,7 @@
-// list페이지의 main이 오늘의 글이고 헤더 좌우 버튼 클릭시 달 데이터로 넘어가는 버전(오늘자 글 메인 페이지로 분리전)
-
 import { useEffect, useState } from 'react';
+
 import './ListPage.css';
-import { useOutletContext } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import DiaryList from '../components/diary/DiaryList';
 
 const SORT_OPTION_LIST = [
@@ -21,6 +20,7 @@ const ListPage = ({ Data }) => {
   const [date, setDate] = useState(new Date());
   const [listData, setListData] = useState([]);
   const { setHeaderProps } = useOutletContext();
+  const navigate = useNavigate();
 
   const getFilteredDiaryByMonth = (dateToFilter) => {
     const year = dateToFilter.getFullYear();
@@ -34,35 +34,34 @@ const ListPage = ({ Data }) => {
     );
   };
 
-  useEffect(() => {
-    // setDate(pdate);
-    // console.log('ss3', date.toLocaleDateString());
-    const today = new Date();
+  const getFilteredDiaryByDay = (dayToFilter) => {
+    return Data.filter(
+      (diary) =>
+        new Date(diary.date).toDateString() === dayToFilter.toDateString()
+    );
+  };
 
+  useEffect(() => {
     setHeaderProps({
-      title: `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(
-        2,
-        '0'
-      )}`,
-      handleClickPrev,
-      handleClickNext,
+      title: date.toLocaleDateString('KO-kr'),
+      handleClickPrev: handleClickHeaderBtn,
+      handleClickNext: handleClickHeaderBtn,
     });
 
-    setListData(getFilteredDiaryByMonth(date));
+    const today = new Date();
+    if (
+      date.getFullYear() === today.getFullYear() &&
+      date.getMonth() === today.getMonth() &&
+      date.getDate() === today.getDate()
+    ) {
+      // 오늘 날짜면 하루 데이터만 보여줌
+      setListData(getFilteredDiaryByDay(date));
+    }
   }, [Data, date]);
 
   // 이전 달 버튼 클릭 시
-  const handleClickPrev = () => {
-    const newDate = new Date(date.getFullYear(), date.getMonth() - 1);
-    setDate(newDate);
-    setListData(getFilteredDiaryByMonth(newDate));
-  };
-
-  // 다음 달 버튼 클릭 시
-  const handleClickNext = () => {
-    const newDate = new Date(date.getFullYear(), date.getMonth() + 1);
-    setDate(newDate);
-    setListData(getFilteredDiaryByMonth(newDate));
+  const handleClickHeaderBtn = () => {
+    navigate('/list');
   };
 
   return (

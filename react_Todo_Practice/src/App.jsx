@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { CreatePage, DetailPage, EditPage, ListPage } from './pages';
+import { CreatePage, DetailPage, EditPage, ListPage, MainPage } from './pages';
 import { useEffect, useReducer, useState } from 'react';
 import { diaryReducer } from './reducer/diaryReducer';
 import axios from 'axios';
@@ -33,15 +33,35 @@ function App() {
     }
   };
 
+  const create = () => {
+    dispatch({
+      type: 'CREATE',
+      data: initData.data,
+    });
+  };
+  const update = () => {
+    dispatch({
+      type: 'UPDATE',
+      data: initData.data,
+    });
+  };
+  const remove = () => {
+    dispatch({
+      type: 'REMOVE',
+      data: initData.data,
+    });
+  };
+
   return (
     <>
       <div>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<AppRoute />}>
+              <Route index element={<MainPage Data={state} />} />
               <Route path="/list" element={<ListPage Data={state} />} />
               <Route path="/newArticle" element={<CreatePage />} />
-              <Route path="/edit" element={<EditPage Data={state} />} />
+              <Route path="/edit/:id" element={<EditPage Data={state} />} />
               <Route path="/detail/:id" element={<DetailPage Data={state} />} />
             </Route>
           </Routes>

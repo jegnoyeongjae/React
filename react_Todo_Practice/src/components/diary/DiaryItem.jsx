@@ -1,14 +1,17 @@
+import { Link } from 'react-router-dom';
 import './DiaryItem.css';
+import { WEATHER_ICONS } from '../../constants/ui';
 
-const DiaryItem = () => {
+const DiaryItem = ({ data }) => {
   return (
     <li className="DiaryItem">
-      링크태그 걸기
-      <p className="left">
-        <span className="weather"></span>
-        <span className="title"></span>
-      </p>
-      <p className="date"></p>
+      <Link to={`/detail/${data.id}`}>
+        <p className="left">
+          <span className="weather">{WEATHER_ICONS[data.weather]}</span>
+          <span className="title">{data.title}</span>
+        </p>
+        <p className="date">{data.date}</p>
+      </Link>
     </li>
   );
 };

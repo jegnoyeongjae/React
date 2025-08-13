@@ -1,7 +1,13 @@
-const DiaryList = () => {
+import DiaryItem from './DiaryItem';
+
+const DiaryList = ({ monthData }) => {
   return (
     <div className="DiaryList">
-      <ul></ul>
+      <ul>
+        {monthData.map((data) => (
+          <DiaryItem key={data.id} data={data} />
+        ))}
+      </ul>
     </div>
   );
 };

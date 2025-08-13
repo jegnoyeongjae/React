@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = ({ title, handleClickPrev, handleClickNext }) => {

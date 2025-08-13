@@ -1,6 +1,21 @@
+import { useEffect, useState } from 'react';
 import './DiaryEdit.css';
 
-const DiaryEdit = () => {
+const DiaryEdit = ({ data }) => {
+  const [title, setTitle] = useState();
+  const [date, setDate] = useState();
+  const [weather, setWeather] = useState();
+  const [content, setContent] = useState();
+
+  useEffect(() => {
+    if (data) {
+      setTitle(data.title);
+      setDate(String(data.date));
+      setWeather(data.weather);
+      setContent(data.content);
+    }
+  }, [data]);
+
   return (
     <div className="DiaryEdit">
       <div className="title">
@@ -11,6 +26,7 @@ const DiaryEdit = () => {
             placeholder="제목을 입력해주세요."
             name="diaryTitle"
             id="diaryTitle"
+            value={title}
           />
         </p>
         <p className="noti">제목을 반드시 입력해주세요.</p>
@@ -18,17 +34,21 @@ const DiaryEdit = () => {
       <div className="date">
         <h3>날짜</h3>
         <p>
-          <input type="date" name="diaryTitle" id="diaryitle" />
+          <input type="date" name="diaryTitle" id="diaryitle" value={date} />
         </p>
       </div>
       <div className="weather">
         <h3>날씨</h3>
-        <ul></ul>
+        <ul>{weather}</ul>
       </div>
       <div className="content">
         <h3>내용</h3>
         <p>
-          <textarea name="diaryContent" id="diaryContent"></textarea>
+          <textarea
+            name="diaryContent"
+            id="diaryContent"
+            value={content}
+          ></textarea>
         </p>
         <p className="noti">내용을 반드시 입력해주세요.</p>
       </div>
