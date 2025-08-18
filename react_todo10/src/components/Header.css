@@ -1,0 +1,26 @@
+#Header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    border-bottom: 1px solid #ddd;
+}
+#Header .logo{
+    padding: 0 24px;
+    font-size: 24px;
+}
+#Header .gnb{
+    padding: 0 24px;
+}
+#Header .gnb ul{
+    display: flex;
+    gap: 40px;
+}
+#Header .gnb li a{
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+#Header .gnb .active a{
+    color: #b40036;
+}

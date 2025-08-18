@@ -40,7 +40,7 @@ const App = () => {
     dataLoading();
   }, []);
 
-  // 리듀서로 관리되는 일기 생성하기
+  // 리듀서로 관리되는 일기 생성하기;
   const onCreate = (data) => {
     diaryDispatch({
       type: 'CREATE',
